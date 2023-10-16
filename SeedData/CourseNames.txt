@@ -1,0 +1,33 @@
+SET NOCOUNT ON 
+--USE limsN
+IF Object_id('fakeCourseName') <> 0
+	DROP TABLE fakeCourseName;
+GO
+
+CREATE TABLE fakeCourseName (courseID int identity, CourseName nvarchar (800));
+INSERT INTO fakeCourseName (CourseName) VALUES ('Practical Construction');
+INSERT INTO fakeCourseName (CourseName) VALUES ('Construction Theory');
+INSERT INTO fakeCourseName (CourseName) VALUES ('First Aid');
+INSERT INTO fakeCourseName (CourseName) VALUES ('Business Manageent');
+INSERT INTO fakeCourseName (CourseName) VALUES ('Accounting');
+INSERT INTO fakeCourseName (CourseName) VALUES ('Building Envelope');
+INSERT INTO fakeCourseName (CourseName) VALUES ('Green Construction');
+INSERT INTO fakeCourseName (CourseName) VALUES ('Power Point');
+INSERT INTO fakeCourseName (CourseName) VALUES ('Hammer and nails');
+INSERT INTO fakeCourseName (CourseName) VALUES ('Saws and drills');
+INSERT INTO fakeCourseName (CourseName) VALUES ('Planning');
+INSERT INTO fakeCourseName (CourseName) VALUES ('Design');
+INSERT INTO fakeCourseName (CourseName) VALUES ('After sale support'); 
+INSERT INTO fakeCourseName (CourseName) VALUES ('Small Home Construction'); 
+INSERT INTO fakeCourseName (CourseName) VALUES ('Big Home Construction'); 
+INSERT INTO fakeCourseName (CourseName) VALUES ('Small Home Design'); 
+INSERT INTO fakeCourseName (CourseName) VALUES ('Big Home Design'); 
+INSERT INTO fakeCourseName (CourseName) VALUES ('Small Home Marketing'); 
+INSERT INTO fakeCourseName (CourseName) VALUES ('Big Home Marketing'); 
+INSERT INTO fakeCourseName (CourseName) VALUES ('Small Home Sales'); 
+INSERT INTO fakeCourseName (CourseName) VALUES ('Big Home Sales'); 
+INSERT INTO fakeCourseName (CourseName) VALUES ('Small Home Warranty'); 
+INSERT INTO fakeCourseName (CourseName) VALUES ('Big Home Warranty'); 
+INSERT INTO fakeCourseName (CourseName) VALUES ('Understanding the HPA'); 
+   
+SELECT * FROM fakeCourseName
