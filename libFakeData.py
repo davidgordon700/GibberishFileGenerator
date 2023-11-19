@@ -62,6 +62,23 @@ def getSeedDataFromFile(seedDataType = "FirstNames"):
 
     return seedData
 
+def getListOfDogPictures():
+    path = "./SeedData/dogs/"
+
+    listOfDogPictures = []
+    
+    if not os.path.exists(path):
+        print ("seed data dog pictures folder does not exist", path)
+    else:
+        for f in os.listdir(path):
+            if os.path.isfile(os.path.join(path,f)):
+                filename,ext = os.path.splitext(f)
+                if ext.upper() in [".JPEG",".PNG"]:
+                    listOfDogPictures.append(os.path.join(path,f))
+
+    return listOfDogPictures
+
+
 def getSeedDataCityList():
     """
     reads seed data from the a CSV file of canadian cities.
