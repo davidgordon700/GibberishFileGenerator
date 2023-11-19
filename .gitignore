@@ -2,6 +2,13 @@
 output/*
 .DS_Store
 
+#virtual environment
+envGibberish/*
+envGibberish/
+env*
+
+#proof of concept notebooks
+poc*.ipynb
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
