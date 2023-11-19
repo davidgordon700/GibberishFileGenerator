@@ -1,5 +1,6 @@
 # GibberishFileGenerator
 *Problem*: many projects need sample data or sample files.
+
 *Solution*: Genearte gibberish files for testing and dev without using private or personal identifiable data.
 
 References:
