@@ -54,7 +54,7 @@ def getSeedDataFromFile(seedDataType = "FirstNames"):
     if not os.path.exists(fileAndPath):
         print ("seed data does not exist", fileAndPath)
     else:    
-        with open(fileAndPath) as f:
+        with open(fileAndPath,encoding='utf8') as f:
             for line in f:
                 line = line.replace("\n","")
                 if line != "":
@@ -89,13 +89,7 @@ def getSeedDataCityList():
     if not os.path.exists(fileAndPath):
         print ("seed data city list does not exist", fileAndPath)
     else:    
-        # with open(fileAndPath) as f:
-        #     for line in f:
-        #         line = line.replace("\n","")
-        #         if line != "":
-        #             seedData.append(line)
-
-        f = open(fileAndPath)
+        f = open(fileAndPath,encoding='utf8')
         fcsv = csv.DictReader(f)
         for row in fcsv:
             CityName = row["Geographical Name"]
