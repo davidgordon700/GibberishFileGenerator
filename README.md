@@ -15,7 +15,7 @@ Images from [Stable Diffusion](https://stablediffusionweb.com/#ai-image-generato
 ## Usage
 in line runBuildGibberishDocuments followed by the number of documents needed
 ```Shell
- python3 runOutputGibberishDocuments.py 1000
+ python3 runBuildGibberishDocuments.py 1000
 ```
 
 If the number of documents is needed a prompt will be displayed.
