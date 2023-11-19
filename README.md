@@ -1,12 +1,29 @@
 # GibberishFileGenerator
-Generates gibberish files for testing and dev
+*Problem*: many projects need sample data or sample files.
 
+*Solution*: Genearte gibberish files for testing and dev without using private or personal identifiable data.
+
+References:
 Text parts sourced from [byteshift.de?  lorem-ipsum generator](https://generator.lorem-ipsum.info/_latin)
-cgn_canada_csv_eng.csv sourced from [Canadian Geographic Names](https://open.canada.ca/data/en/dataset/e27c6eba-3c5d-4051-9db2-082dc6411c2c)
-Credit cards sourced from [Moneris](https://developer.moneris.com/More/Testing/Testing%20a%20Solution)
-Images from [Stable Diffusion](https://stablediffusionweb.com/#ai-image-generator)
 
-# Document types
+cgn_canada_csv_eng.csv sourced from [Canadian Geographic Names](https://open.canada.ca/data/en/dataset/e27c6eba-3c5d-4051-9db2-082dc6411c2c)
+
+Credit cards sourced from [Moneris](https://developer.moneris.com/More/Testing/Testing%20a%20Solution)
+
+Images from [Stable Diffusion](https://stablediffusionweb.com/#ai-image-generator) and [Bing chat](https://www.bing.com)
+
+## Usage
+in line runBuildGibberishDocuments followed by the number of documents needed
+```Shell
+ python3 runOutputGibberishDocuments.py 1000
+```
+
+If the number of documents is needed a prompt will be displayed.
+
+Files will be stored in an `output` folder.
+
+
+## Document types
 
 Documents follow a naming convention to help users interpret what type of sample document is being viewed.
 
@@ -16,7 +33,7 @@ year-month - an date part that can be used for filters and sorting.
 sequence - an iteration counter to help make each file name unique.
 batchName - a batch name to maintain unique file names across iterations.
 
-## Contracts
+### Contracts
 
 doc type indicator = "C"
 
@@ -32,7 +49,7 @@ Document body includes:
 >
 >A block of random concluding text.
 
-## Application
+### Application
 
 doc type indicator = "A"
 
@@ -54,7 +71,7 @@ or "Rental Assistance" a credit card section is added including card number, CVC
 >
 >All other applications include a "conditions" sub heading.
 
-## Application Approval Letter
+### Application Approval Letter
 
 doc type indicator = "LApproval"
 
@@ -69,7 +86,7 @@ Document body includes:
 >
 >A "Sincerely" statement from a random clerk.
 
-## Application Rejection Letter
+### Application Rejection Letter
 
 doc type indicator = "LRejection"
 
@@ -84,7 +101,7 @@ Document body includes:
 >
 >A "Sincerely" statement from a random supervisor.
 
-## Reports
+### Reports
 
 doc type indicator = "rpt"
 
