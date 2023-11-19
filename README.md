@@ -10,7 +10,7 @@ cgn_canada_csv_eng.csv sourced from [Canadian Geographic Names](https://open.can
 
 Credit cards sourced from [Moneris](https://developer.moneris.com/More/Testing/Testing%20a%20Solution)
 
-Images from [Stable Diffusion](https://stablediffusionweb.com/#ai-image-generator)
+Images from [Stable Diffusion](https://stablediffusionweb.com/#ai-image-generator) and [Bing chat](https://www.bing.com)
 
 # Document types
 
