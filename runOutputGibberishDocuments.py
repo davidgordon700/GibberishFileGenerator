@@ -444,12 +444,21 @@ def outputReports():
 
 if __name__ == '__main__':
     #delete the exiting content
+    
+        
+    
+
     for file in os.listdir(outPutPath):
         fileAndPath = os.path.join(outPutPath,file)
         if os.path.isfile(fileAndPath):
             os.remove(fileAndPath)
-    
-    numberToPrint = int(input("how many files should be generated? "))
+    try:
+        numberToPrint = int(sys.argv[1])
+    except:
+        numberToPrint = int(input("how many files should be generated? "))
+
+    dateStart = datetime.datetime.now()
+
     makeRandomMoodFace()
     print("loading seed data")
     loadSeedData()
@@ -465,5 +474,9 @@ if __name__ == '__main__':
 
     outputReports()
     print("")
-    #print("done")   
+    
+    print("execution time ", format((datetime.datetime.now()-dateStart).total_seconds(),".2f"), "seconds.")
+    
+else:
+    print("nothing")
     
