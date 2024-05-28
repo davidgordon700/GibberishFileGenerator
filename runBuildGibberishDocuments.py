@@ -365,6 +365,102 @@ def outputApplications(numberOfApplications = 1):
         sys.stdout.flush()   
     sys.stdout.write(f"({progressCount}/{numberToPrint})  application progress: %d%%  \r" % (progressCount/numberToPrint*100) )
 
+def outputInvoices(numberOfDocs = 1):
+    progressCount = 0
+    for sequence in range(0,numberOfDocs):
+        reportElements = []
+        date = datetime.datetime.now()+datetime.timedelta(weeks= -1*random.choice(range(1,300,1)))
+        year =  date.strftime("%Y")
+        month = date.strftime("%b")
+        reportName = f"I{year}-{month}.{sequence}B{batchName}.pdf"
+        
+        applicationType = fd.getRandomItemFromList(sdApplicationTypes)
+
+        report = SimpleDocTemplate(os.path.join(outPutPath,f"{reportName}"))
+        styles = getSampleStyleSheet()
+
+        #title
+        reportElements.append(Paragraph(f"Invoice: {applicationType}",styles["h1"]))
+        #intro paragraph
+        reportElements.append(Paragraph(f"{fd.getRandomItemFromList(sdTextParts)}.{fd.getRandomItemFromList(sdTextParts)}.{fd.getRandomItemFromList(sdTextParts)}.{fd.getRandomItemFromList(sdTextParts)}."))
+
+        firstName = fd.getRandomItemFromList(sdFirstNames)
+        lastName = fd.getRandomItemFromList(sdLastNames)
+        dob = datetime.datetime.now()+datetime.timedelta(days= -1*random.choice(range(365*18,365*99)))
+        yourRegarding = f"Regarding: {lastName},{firstName} {dob}"
+        yourFileReference = f"Your file reference: {random.choice(range(365*18,365*99))}.{random.choice(range(1,999))}"
+        
+        yourFileReference = f"Your file reference: {random.choice(range(365*18,365*99))}.{random.choice(range(1,999))}"
+
+        reportElements.append(Paragraph(f"{yourRegarding}",styles["h3"]))
+        reportElements.append(Paragraph(f"{yourFileReference}",styles["h4"]))
+
+        invoiceAmount = random.choice(range(10,10000))
+        costStatement = f"Amount: {invoiceAmount}"
+        reportElements.append(Paragraph(f"{costStatement}",styles["h4"]))
+        if random.choice(range(1,2)) > 1:
+            taxAmount = invoiceAmount*.7
+            taxStatement = f"Taxes: {taxAmount}"
+            reportElements.append(Paragraph(f"{taxStatement}",styles["h4"]))
+        else:
+            taxAmount = 0
+            taxStatement = f""
+
+        if applicationType in ["Employment",
+                        "Daycare Supplement",
+                        "Driver's Licence"]:
+            makeRandomMoodFace()
+            
+            reportElements.append(Paragraph(f"Application Image",styles["h2"]))
+            #add a applicant image
+            attachment_path = "./SeedData/moodface.png"
+            attachment_filename = os.path.basename(attachment_path)
+            report_image = Image(attachment_path, width=1*inch,height=1*inch)
+            report_image.hAlign = "LEFT"
+            reportElements.append(report_image)
+
+        if applicationType in ["Dog Licence"]:
+            reportElements.append(Paragraph(f"Dog's Picture",styles["h2"]))
+            #add a applicant image
+            attachment_path = random.choice(sdListOfDogPictures)
+            attachment_filename = os.path.basename(attachment_path)
+            report_image = Image(attachment_path, width=1*inch,height=1*inch)
+            report_image.hAlign = "LEFT"
+            reportElements.append(report_image)
+
+ 
+
+        if applicationType not in ["Housing",
+                                "Learning Grant",
+                                "Employment",
+                                "Daycare Supplement",
+                                "Rental Assistance"]:
+            expiryDate = datetime.datetime.now()+datetime.timedelta(days= random.choice(range(3,365*2)))
+            reportElements.append(Paragraph("Fee Collection",styles["h2"]))
+            reportElements.append(Paragraph(f"____________________________________________"))
+            reportElements.append(Paragraph(f"Credit card: {fd.getRandomItemFromList(sdCreditCards)}"))
+            reportElements.append(Paragraph(f"CVC: 12{fd.getRandom0to9Str}"))
+            reportElements.append(Paragraph(f"Expiry date: {expiryDate.strftime('%Y %b %d')}"))
+            reportElements.append(Paragraph(f"Amount: {str(random.choice(range(100,900,10)))}"))  
+            reportElements.append(Paragraph(f"____________________________________________")) 
+        else:
+            reportElements.append(Paragraph("Conditions",styles["h2"])) 
+            #build approval letter
+        
+        #report conclusion
+        reportElements.append(Paragraph(f""))
+        reportElements.append(Paragraph(f""))
+        reportElements.append(Paragraph(f"{fd.getRandomItemFromList(sdTextParts)}.{fd.getRandomItemFromList(sdTextParts)}.{fd.getRandomItemFromList(sdTextParts)}.{fd.getRandomItemFromList(sdTextParts)}."))
+        
+        report.build(reportElements)
+        os.utime(os.path.join(outPutPath,f"{reportName}"), (date.timestamp(), date.timestamp()))
+
+     
+        progressCount = progressCount + 1
+        sys.stdout.write(f"({progressCount}/{numberToPrint})  invoice progress: %d%%  \r" % (progressCount/numberToPrint*100) )
+        sys.stdout.flush()   
+    sys.stdout.write(f"({progressCount}/{numberToPrint})  invoice progress: %d%%  \r" % (progressCount/numberToPrint*100) )
+
 def outputSiteVisitImages(numberToPrint = 1):
     progressCount = 0
     for sequence in range (0,numberToPrint):
@@ -469,8 +565,11 @@ if __name__ == '__main__':
     outputApplications(numberToPrint)
     print("")
     
+    outputInvoices(numberToPrint)
+    print("")
+
     outputSiteVisitImages(numberToPrint)
-    print()
+    print("")
 
     outputReports()
     print("")
